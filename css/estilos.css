@@ -259,3 +259,156 @@ body {
     color: var(--texto-claro);
     font-size: 1.1rem;
 }
+
+/* =========================================
+   PANEL ADMINISTRATIVO Y LOGIN
+   ========================================= */
+.header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.layout-admin {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (max-width: 1024px) {
+    .layout-admin { grid-template-columns: 1fr; }
+}
+
+.panel-card {
+    background: var(--blanco);
+    padding: 1.5rem;
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra-suave);
+}
+
+.panel-card h3 {
+    margin-bottom: 1.5rem;
+    color: var(--verde-primario);
+    border-bottom: 2px solid #eee;
+    padding-bottom: 0.5rem;
+}
+
+.grupo-form { margin-bottom: 1.2rem; }
+
+.grupo-form label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #444;
+}
+
+.grupo-form input,
+.grupo-form select {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    transition: var(--transicion);
+}
+
+.grupo-form input:focus,
+.grupo-form select:focus {
+    border-color: var(--verde-secundario);
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+}
+
+.fila-form { display: flex; gap: 1rem; }
+.fila-form .grupo-form { flex: 1; }
+
+.btn {
+    padding: 0.7rem 1.2rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transicion);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.btn-primario { background: var(--verde-secundario); color: var(--blanco); width: 100%; }
+.btn-primario:hover { background: var(--verde-primario); }
+.btn-secundario { background: #e9ecef; color: var(--texto-oscuro); width: 100%; margin-top: 0.5rem; }
+.btn-secundario:hover { background: #dee2e6; }
+.btn-peligro { background: var(--peligro); color: var(--blanco); }
+.btn-peligro:hover { background: #b00020; }
+.btn-accion { padding: 0.4rem 0.8rem; font-size: 0.85rem; border-radius: 6px; margin: 0.2rem; }
+.btn-editar { background: var(--alerta); color: var(--blanco); }
+
+.tabla-contenedor { overflow-x: auto; }
+
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+
+th, td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    border-bottom: 2px solid #dee2e6;
+    white-space: nowrap;
+}
+
+tr:hover { background-color: #fcfcfc; }
+
+.celda-producto { display: flex; align-items: center; }
+
+.img-miniatura {
+    width: 40px;
+    height: 40px;
+    border-radius: 6px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+
+.badge-tabla {
+    padding: 0.35rem 0.75rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+}
+
+.badge-tabla.fresco { background: #d8f3dc; color: var(--exito); }
+.badge-tabla.alerta { background: #ffedd8; color: var(--alerta); }
+.badge-tabla.vencido { background: #ffe5ec; color: var(--peligro); }
+.badge-tabla.agotado { background: #e9ecef; color: #6c757d; }
+
+.mensaje-error {
+    background: #ffe5ec;
+    color: var(--peligro);
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.login-contenedor {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+}
+
+.login-card { width: 100%; max-width: 380px; }
+
+[hidden] { display: none !important; }

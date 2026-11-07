@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel CRUD | Frescos del Día</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="header-principal header-admin">
+        <div>
+            <h1>⚙️ Panel de Control de Perecederos</h1>
+            <p>Gestión de lotes, stock y control de fechas de caducidad</p>
+        </div>
+        <button id="btn-logout" class="btn btn-peligro">Cerrar Sesión</button>
+    </header>
+
+    <main class="contenedor layout-admin">
+
+        <aside class="panel-card">
+            <h3 id="titulo-form">➕ Registrar Producto</h3>
+            <div id="error-form" class="mensaje-error" hidden></div>
+
+            <form id="form-producto">
+                <input type="hidden" id="producto-id">
+
+                <div class="grupo-form">
+                    <label for="nombre">Nombre del Producto</label>
+                    <input type="text" id="nombre" maxlength="100" required placeholder="Ej: Leche Entera 1L">
+                </div>
+
+                <div class="grupo-form">
+                    <label for="categoria">Categoría</label>
+                    <select id="categoria" required>
+                        <option value="Lácteos">Lácteos</option>
+                        <option value="Cárnicos">Cárnicos</option>
+                        <option value="Frutas y Verduras">Frutas y Verduras</option>
+                        <option value="Panadería">Panadería</option>
+                    </select>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="lote">Código de Lote</label>
+                    <input type="text" id="lote" maxlength="30" required placeholder="Ej: LT-2026-05">
+                </div>
+
+                <div class="fila-form">
+                    <div class="grupo-form">
+                        <label for="precio">Precio Unitario ($)</label>
+                        <input type="number" step="100" min="0" id="precio" required>
+                    </div>
+                    <div class="grupo-form">
+                        <label for="stock">Stock Actual</label>
+                        <input type="number" min="0" id="stock" required>
+                    </div>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="fecha_vencimiento">Fecha de Vencimiento</label>
+                    <input type="date" id="fecha_vencimiento" required>
+                </div>
+
+                <div class="grupo-form">
+                    <label for="imagen_url">URL de Imagen (Opcional)</label>
+                    <input type="url" id="imagen_url" placeholder="https://ejemplo.com/img.jpg">
+                </div>
+
+                <button type="submit" class="btn btn-primario">💾 Guardar Registro</button>
+                <button type="button" class="btn btn-secundario" id="btn-cancelar" hidden>❌ Cancelar Edición</button>
+            </form>
+        </aside>
+
+        <section class="panel-card tabla-contenedor">
+            <h3>📋 Inventario General en Base de Datos</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Categoría / Lote</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Vencimiento</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tabla-admin"></tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

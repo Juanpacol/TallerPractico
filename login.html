@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso | Frescos del Día</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <h1>🔐 Acceso administrativo</h1>
+        <p>Solo personal autorizado</p>
+    </header>
+
+    <main class="login-contenedor">
+        <form id="form-login" class="panel-card login-card">
+            <h3>Iniciar sesión</h3>
+            <div id="error-login" class="mensaje-error" hidden></div>
+
+            <div class="grupo-form">
+                <label for="usuario">Usuario</label>
+                <input type="text" id="usuario" autocomplete="username" required>
+            </div>
+            <div class="grupo-form">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" autocomplete="current-password" required>
+            </div>
+
+            <button type="submit" class="btn btn-primario">Entrar</button>
+        </form>
+    </main>
+
+    <script src="js/login.js"></script>
+</body>
+</html>
