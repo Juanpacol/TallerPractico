@@ -23,6 +23,10 @@ Para apagar: `docker compose down`. Para reiniciar la base desde cero (vuelve a 
 
 ## Arquitectura
 
+![Diagrama de arquitectura](docs/arquitectura.png)
+
+Versión interactiva: [`docs/arquitectura.html`](docs/arquitectura.html) (descárgala y ábrela en el navegador).
+
 ```
 Navegador ── fetch (JSON) ──> PHP + Apache (contenedor web) ── PDO ──> PostgreSQL (contenedor db)
 ```
