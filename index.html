@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frescos del Día | Tienda</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <header class="header-principal">
+        <h1>🌿 Frescos del Día</h1>
+        <p>Productos perecederos con control de lote y frescura garantizada</p>
+    </header>
+
+    <main class="contenedor">
+        <section class="barra-filtros">
+            <div class="grupo-filtro">
+                <label for="buscador">Buscar Producto</label>
+                <input type="search" id="buscador" placeholder="Ej: Leche, Queso, Pollo...">
+            </div>
+
+            <div class="grupo-filtro">
+                <label for="filtro-categoria">Filtrar por Categoría</label>
+                <select id="filtro-categoria">
+                    <option value="Todas">Todas las categorías</option>
+                    <option value="Lácteos">🥛 Lácteos</option>
+                    <option value="Cárnicos">🥩 Cárnicos</option>
+                    <option value="Frutas y Verduras">🍎 Frutas y Verduras</option>
+                    <option value="Panadería">🥐 Panadería</option>
+                </select>
+            </div>
+        </section>
+
+        <section id="catalogo-cliente" class="grid-productos">
+            <!-- Las tarjetas las inyecta js/tienda.js -->
+        </section>
+    </main>
+
+    <script src="js/tienda.js"></script>
+</body>
+</html>
