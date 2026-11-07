@@ -1,0 +1,30 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: tienda_perecederos
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432" # 5434 en tu Mac para no chocar con otros Postgres (5432, 5433)
+    volumes:
+      - ./sql/database.sql:/docker-entrypoint-initdb.d/database.sql:ro
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    ports:
+      - "8000:80"
+    environment:
+      DB_HOST: db
+      DB_PORT: "5432"
+      DB_NAME: tienda_perecederos
+      DB_USER: postgres
+      DB_PASS: postgres
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
