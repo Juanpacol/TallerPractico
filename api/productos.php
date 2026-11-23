@@ -103,7 +103,7 @@ try {
             $p[':id'] = $id;
             $stmt = $pdo->prepare('UPDATE productos SET nombre = :nombre, categoria = :categoria, lote = :lote,
                 precio = :precio, stock = :stock, fecha_vencimiento = :fecha,
-                imagen_url = COALESCE(:imagen, \'https://images.unsplash.com/photo-1542838132-92c53300491e?w=400\')
+                imagen_url = COALESCE(:imagen, imagen_url)
                 WHERE id = :id');
             $stmt->execute($p);
             if ($stmt->rowCount() === 0) {
