@@ -14,7 +14,7 @@
     </header>
 
     <main class="contenedor">
-        <section class="barra-filtros">
+        <section class="barra-filtros" aria-label="Buscar y filtrar productos">
             <div class="grupo-filtro">
                 <label for="buscador">Buscar Producto</label>
                 <input type="search" id="buscador" placeholder="Ej: Leche, Queso, Pollo...">
@@ -32,11 +32,10 @@
             </div>
         </section>
 
-        <section id="catalogo-cliente" class="grid-productos">
-            <!-- Las tarjetas las inyecta js/tienda.js -->
-        </section>
+        <section id="catalogo-cliente" class="grid-productos" aria-label="Catálogo de productos" aria-live="polite"></section>
     </main>
 
+    <script src="js/utilidades.js"></script>
     <script src="js/tienda.js"></script>
 </body>
 </html>

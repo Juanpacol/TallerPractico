@@ -1,16 +1,10 @@
-// Vista del cliente: consume los productos vigentes desde la API de PHP.
+const DIAS_CONSUMO_RAPIDO = 3;
+
 let productos = [];
 
 const contenedorCatalogo = document.getElementById('catalogo-cliente');
 const inputBuscador = document.getElementById('buscador');
 const selectCategoria = document.getElementById('filtro-categoria');
-
-const formatoMoneda = (valor) =>
-    new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', minimumFractionDigits: 0 }).format(valor);
-
-// Escapa texto de la base de datos antes de insertarlo como HTML (evita XSS).
-const esc = (texto) =>
-    String(texto ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
 function mostrarMensaje(titulo, detalle) {
     contenedorCatalogo.innerHTML = `
@@ -18,6 +12,38 @@ function mostrarMensaje(titulo, detalle) {
             <h2>${esc(titulo)}</h2>
             <p>${esc(detalle)}</p>
         </div>`;
+}
+
+function crearTarjeta(producto) {
+    const dias = Number(producto.dias_para_vencer);
+    const urgente = dias <= DIAS_CONSUMO_RAPIDO;
+    const claseBadge = urgente ? 'badge-alerta' : 'badge-fresco';
+    const textoEstado = urgente ? `¡Consumo rápido! (${dias} días)` : `Fresco (${dias} días)`;
+
+    const tarjeta = document.createElement('article');
+    tarjeta.className = 'tarjeta-producto';
+    tarjeta.innerHTML = `
+        <div class="badge-contenedor">
+            <span class="badge ${claseBadge}">${esc(textoEstado)}</span>
+        </div>
+        <div class="tarjeta-img-contenedor">
+            <img src="${esc(producto.imagen_url)}" alt="${esc(producto.nombre)}" loading="lazy">
+        </div>
+        <div class="tarjeta-cuerpo">
+            <div>
+                <span class="categoria-label">${esc(producto.categoria)}</span>
+                <h3 class="tarjeta-titulo">${esc(producto.nombre)}</h3>
+                <div class="tarjeta-detalles">
+                    Lote: <strong>${esc(producto.lote)}</strong><br>
+                    Vence: ${esc(producto.fecha_vencimiento)}
+                </div>
+            </div>
+            <div class="precio-contenedor">
+                <span class="precio">${formatoMoneda(producto.precio)}</span>
+                <span class="stock">${esc(producto.stock)} und.</span>
+            </div>
+        </div>`;
+    return tarjeta;
 }
 
 function renderizarProductos(lista) {
@@ -28,37 +54,7 @@ function renderizarProductos(lista) {
         return;
     }
 
-    lista.forEach((p) => {
-        const dias = Number(p.dias_para_vencer);
-        const urgente = dias <= 3;
-        const badgeClase = urgente ? 'badge-alerta' : 'badge-fresco';
-        const textoEstado = urgente ? `¡Consumo rápido! (${dias} días)` : `Fresco (${dias} días)`;
-
-        const tarjeta = document.createElement('article');
-        tarjeta.className = 'tarjeta-producto';
-        tarjeta.innerHTML = `
-            <div class="badge-contenedor">
-                <span class="badge ${badgeClase}">${esc(textoEstado)}</span>
-            </div>
-            <div class="tarjeta-img-contenedor">
-                <img src="${esc(p.imagen_url)}" alt="${esc(p.nombre)}" loading="lazy">
-            </div>
-            <div class="tarjeta-cuerpo">
-                <div>
-                    <span class="categoria-label">${esc(p.categoria)}</span>
-                    <h3 class="tarjeta-titulo">${esc(p.nombre)}</h3>
-                    <div class="tarjeta-detalles">
-                        Lote: <strong>${esc(p.lote)}</strong><br>
-                        Vence: ${esc(p.fecha_vencimiento)}
-                    </div>
-                </div>
-                <div class="precio-contenedor">
-                    <span class="precio">${formatoMoneda(p.precio)}</span>
-                    <span class="stock">${esc(p.stock)} und.</span>
-                </div>
-            </div>`;
-        contenedorCatalogo.appendChild(tarjeta);
-    });
+    lista.forEach((producto) => contenedorCatalogo.appendChild(crearTarjeta(producto)));
 }
 
 function filtrarCatalogo() {

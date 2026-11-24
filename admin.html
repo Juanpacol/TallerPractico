@@ -19,7 +19,7 @@
     <main class="contenedor layout-admin">
 
         <aside class="panel-card">
-            <h3 id="titulo-form">➕ Registrar Producto</h3>
+            <h2 id="titulo-form">➕ Registrar Producto</h2>
             <div id="error-form" class="mensaje-error" hidden></div>
 
             <form id="form-producto">
@@ -72,17 +72,17 @@
         </aside>
 
         <section class="panel-card tabla-contenedor">
-            <h3>📋 Inventario General en Base de Datos</h3>
-            <table>
+            <h2 id="titulo-tabla">📋 Inventario General en Base de Datos</h2>
+            <table aria-labelledby="titulo-tabla">
                 <thead>
                     <tr>
-                        <th>Producto</th>
-                        <th>Categoría / Lote</th>
-                        <th>Precio</th>
-                        <th>Stock</th>
-                        <th>Vencimiento</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
+                        <th scope="col">Producto</th>
+                        <th scope="col">Categoría / Lote</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Stock</th>
+                        <th scope="col">Vencimiento</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tabla-admin"></tbody>
@@ -91,6 +91,7 @@
 
     </main>
 
+    <script src="js/utilidades.js"></script>
     <script src="js/admin.js"></script>
 </body>
 </html>
