@@ -42,7 +42,6 @@ function cerrarSesion(): never
     responderJson(200, ['ok' => true]);
 }
 
-// productos.php incluye este archivo solo para usar exigirSesion().
 if (basename($_SERVER['SCRIPT_NAME']) !== 'auth.php') {
     return;
 }

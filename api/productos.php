@@ -108,7 +108,6 @@ function actualizarProducto(PDO $pdo): never
     $producto = leerYValidar();
     $producto[':id'] = $id;
 
-    // Sin imagen nueva, COALESCE conserva la que ya tenía el producto.
     $stmt = $pdo->prepare(
         'UPDATE productos
          SET nombre = :nombre, categoria = :categoria, lote = :lote, precio = :precio,

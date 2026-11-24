@@ -27,7 +27,6 @@ function irAlLogin() {
     window.location.href = 'login.html';
 }
 
-// Un 403 significa sesión vencida o ausente: se vuelve al login.
 async function llamarApi(url, opciones = {}) {
     const respuesta = await fetch(url, {
         headers: { 'Content-Type': 'application/json' },
