@@ -1,5 +1,4 @@
 <?php
-// Conexión única con PDO a PostgreSQL. Los valores vienen de variables de entorno (docker-compose).
 function obtenerConexion(): PDO
 {
     static $pdo = null;

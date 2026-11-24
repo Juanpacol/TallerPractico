@@ -1,10 +1,4 @@
 <?php
-// CRUD de productos.
-//   GET    productos.php             público: solo productos NO vencidos
-//   GET    productos.php?todos=1     admin: incluye vencidos (requiere sesión)
-//   POST   productos.php             crear      (requiere sesión)
-//   PUT    productos.php?id=N        actualizar (requiere sesión)
-//   DELETE productos.php?id=N        eliminar   (requiere sesión)
 require_once __DIR__ . '/conexion.php';
 require_once __DIR__ . '/auth.php';
 

@@ -33,7 +33,6 @@ async function iniciarSesion(evento) {
     }
 }
 
-// Con sesión activa no tiene sentido ver el login.
 fetch(API_AUTH)
     .then((respuesta) => respuesta.json())
     .then((datos) => { if (datos.autenticado) window.location.href = 'admin.html'; })

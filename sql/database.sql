@@ -18,11 +18,9 @@ CREATE TABLE usuarios_admin (
     password_hash VARCHAR(255) NOT NULL
 );
 
--- Usuario de prueba: admin / Admin123!
 INSERT INTO usuarios_admin (usuario, password_hash)
 VALUES ('admin', crypt('Admin123!', gen_salt('bf')));
 
--- Productos de prueba: vigentes, uno por vencer y uno vencido
 INSERT INTO productos (nombre, categoria, lote, precio, stock, fecha_vencimiento, imagen_url) VALUES
 ('Leche Entera Pasteurizada 1L', 'Lácteos', 'LT-2026-01', 4200.00, 35, CURRENT_DATE + INTERVAL '12 days', 'https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400'),
 ('Queso Campesino Fresco 500g', 'Lácteos', 'LT-2026-02', 11500.00, 8, CURRENT_DATE + INTERVAL '2 days', 'https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400'),

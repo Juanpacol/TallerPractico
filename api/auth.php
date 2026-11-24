@@ -1,8 +1,4 @@
 <?php
-// Inicio y cierre de sesión.
-//   GET  auth.php                  -> {autenticado: bool}
-//   POST auth.php?accion=login     (JSON: usuario, password)
-//   POST auth.php?accion=logout
 require_once __DIR__ . '/conexion.php';
 
 session_set_cookie_params(['httponly' => true, 'samesite' => 'Lax']);
