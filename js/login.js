@@ -1,19 +1,19 @@
-// Autenticación hacia el servidor (api/auth.php).
+const API_AUTH = 'api/auth.php';
+
 const formLogin = document.getElementById('form-login');
 const errorLogin = document.getElementById('error-login');
 
-// Si ya hay sesión activa, ir directo al panel.
-fetch('api/auth.php')
-    .then((r) => r.json())
-    .then((d) => { if (d.autenticado) window.location.href = 'admin.html'; })
-    .catch(() => {});
+function mostrarError(mensaje) {
+    errorLogin.textContent = mensaje;
+    errorLogin.hidden = false;
+}
 
-formLogin.addEventListener('submit', async (e) => {
-    e.preventDefault();
+async function iniciarSesion(evento) {
+    evento.preventDefault();
     errorLogin.hidden = true;
 
     try {
-        const respuesta = await fetch('api/auth.php?accion=login', {
+        const respuesta = await fetch(`${API_AUTH}?accion=login`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
@@ -24,13 +24,19 @@ formLogin.addEventListener('submit', async (e) => {
         const datos = await respuesta.json();
 
         if (!respuesta.ok) {
-            errorLogin.textContent = datos.error || 'No se pudo iniciar sesión';
-            errorLogin.hidden = false;
+            mostrarError(datos.error || 'No se pudo iniciar sesión');
             return;
         }
         window.location.href = 'admin.html';
     } catch (error) {
-        errorLogin.textContent = 'No se pudo conectar con el servidor';
-        errorLogin.hidden = false;
+        mostrarError('No se pudo conectar con el servidor');
     }
-});
+}
+
+// Con sesión activa no tiene sentido ver el login.
+fetch(API_AUTH)
+    .then((respuesta) => respuesta.json())
+    .then((datos) => { if (datos.autenticado) window.location.href = 'admin.html'; })
+    .catch(() => {});
+
+formLogin.addEventListener('submit', iniciarSesion);

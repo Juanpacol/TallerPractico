@@ -1,6 +1,3 @@
-/* =========================================
-   VARIABLES Y CONFIGURACIÓN BASE (CSS3)
-   ========================================= */
 :root {
     --verde-primario: #1b4332;
     --verde-secundario: #2d6a4f;
@@ -34,9 +31,6 @@ body {
     flex-direction: column;
 }
 
-/* =========================================
-   CABECERA
-   ========================================= */
 .header-principal {
     background: linear-gradient(135deg, var(--verde-primario), var(--verde-secundario));
     color: var(--blanco);
@@ -57,9 +51,6 @@ body {
     opacity: 0.9;
 }
 
-/* =========================================
-   CONTENEDOR Y FILTROS
-   ========================================= */
 .contenedor {
     max-width: 1280px;
     margin: 2rem auto;
@@ -115,9 +106,6 @@ body {
     box-shadow: 0 0 0 4px rgba(64, 145, 108, 0.15);
 }
 
-/* =========================================
-   GRID DE PRODUCTOS Y TARJETAS
-   ========================================= */
 .grid-productos {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -211,9 +199,6 @@ body {
     border-radius: 6px;
 }
 
-/* =========================================
-   BADGES Y ANIMACIONES
-   ========================================= */
 .badge-contenedor {
     position: absolute;
     top: 1rem;
@@ -260,9 +245,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* =========================================
-   PANEL ADMINISTRATIVO Y LOGIN
-   ========================================= */
 .header-admin {
     display: flex;
     justify-content: space-between;
@@ -289,7 +271,7 @@ body {
     box-shadow: var(--sombra-suave);
 }
 
-.panel-card h3 {
+.panel-card h2 {
     margin-bottom: 1.5rem;
     color: var(--verde-primario);
     border-bottom: 2px solid #eee;
@@ -412,3 +394,8 @@ tr:hover { background-color: #fcfcfc; }
 .login-card { width: 100%; max-width: 380px; }
 
 [hidden] { display: none !important; }
+
+.sin-datos { text-align: center; padding: 2rem; }
+.detalle-lote { color: var(--texto-claro); }
+.precio-tabla { font-weight: 600; color: var(--verde-primario); }
+.stock-agotado { color: var(--peligro); }
